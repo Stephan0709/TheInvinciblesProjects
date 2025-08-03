@@ -1,0 +1,32 @@
+---
+import '../styles/global.css';
+
+const { title } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Overview</a>
+        <a href="/design">Design & Methodology</a>
+        <a href="/implementation">Implementation</a>
+        <a href="/testing">Testing & Evaluation</a>
+        <a href="/deployment">Deployment</a>
+        <a href="/reflection">Team Reflection</a>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer>
+      &copy; {new Date().getFullYear()} The Invincibles Project
+    </footer>
+  </body>
+</html>
