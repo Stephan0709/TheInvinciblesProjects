@@ -1,17 +1,52 @@
 ---
 layout: '../layouts/Layout.astro'
 title: 'Overview'
+description: 'Project overview and quick links to all sections.'
 ---
 
-<h1> Welcome to The Invincibles Documentation</h1>
+<section class="not-prose mb-8">
+  <h1 class="text-3xl font-bold tracking-tight">Welcome to The Invincibles Documentation</h1>
+  <p class="mt-2 text-slate-600 dark:text-slate-300">
+    This site documents our development process, design decisions, implementation details, testing strategy, and deployment.
+  </p>
+</section>
 
-<p>This site documents the full development process, design decisions, and implementation details of our software project.</p>
+<!-- Quick links grid -->
 
-<p>Use the navigation bar above to explore:</p>
-<ul>
-  <li><a href="/design">📐 Project design</a></li>
-  <li><a href="/implementation"> Feature implementation</a></li>
-  <li><a href="/testing"> Testing strategy</a></li>
-  <li><a href="/deployment"> Deployment steps</a></li>
-  <li><a href="/reflection"> Team reflections</a></li>
-</ul>
+<div class="h-16 w-16 bg-red-500 rounded-lg"></div>
+
+
+<div class="not-prose grid gap-4 sm:grid-cols-2">
+  <a href="/design" class="rounded-2xl border border-slate-200 bg-white/70 p-5 transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-700 dark:bg-slate-900/60">
+    <h3 class="font-semibold"> Project design</h3>
+    <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Architecture, stack, diagrams, and process.</p>
+  </a>
+  <a href="/implementation" class="rounded-2xl border border-slate-200 bg-white/70 p-5 transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-700 dark:bg-slate-900/60">
+    <h3 class="font-semibold"> Feature implementation</h3>
+    <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Core features, trade‑offs, and snippets.</p>
+  </a>
+  <a href="/testing" class="rounded-2xl border border-slate-200 bg-white/70 p-5 transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-700 dark:bg-slate-900/60">
+    <h3 class="font-semibold"> Testing strategy</h3>
+    <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Unit, integration, E2E and tooling.</p>
+  </a>
+  <a href="/deployment" class="rounded-2xl border border-slate-200 bg-white/70 p-5 transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-700 dark:bg-slate-900/60">
+    <h3 class="font-semibold"> Deployment steps</h3>
+    <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">CI/CD, environments, and hosting notes.</p>
+  </a>
+  <a href="/reflection" class="rounded-2xl border border-slate-200 bg-white/70 p-5 transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-700 dark:bg-slate-900/60 ">
+    <h3 class="font-semibold"> Team reflections</h3>
+    <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">What went well, what didn’t, and lessons learned.</p>
+  </a>
+     <a href="/methodology" class="rounded-2xl border border-slate-200 bg-white/70 p-5 transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-700 dark:bg-slate-900/60 ">
+    <h3 class="font-semibold"> Git methodology</h3>
+    <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Process we followd to succesfully develop our application.</p>
+     <a href="/techstack" class="rounded-2xl border border-slate-200 bg-white/70 p-5 transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-700 dark:bg-slate-900/60 ">
+    <h3 class="font-semibold"> Tech stack</h3>
+    <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Explanation fo the technologies we used and why.</p>
+  </a>
+
+  <a href="/projectmanage" class="rounded-2xl border border-slate-200 bg-white/70 p-5 transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-700 dark:bg-slate-900/60 ">
+    <h3 class="font-semibold"> Project management methodology</h3>
+    <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Process we followd to succesfully develop our application.</p>
+  </a>
+</div>

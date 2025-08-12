@@ -4,35 +4,35 @@ title: 'Git Methodology - GitLab Flow'
 description: 'Our branching strategy and policies for day-to-day development.'
 ---
 
-<section class="not-prose mb-6 px-6 max-w-4xl mx-auto">
-  <h1 class="text-3xl font-bold tracking-tight">
+<section class="not-prose mb-6 pl-6">
+  <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
     Git Methodology: <span class="text-indigo-600">GitLab Flow</span>
   </h1>
-  <p class="mt-2 text-slate-600 dark:text-slate-300">
+  <p class="mt-2 text-gray-700 dark:text-gray-300">
     We use <strong>GitLab Flow</strong> to keep feature work, reviews, and deployments simple and transparent.
     It combines the clarity of feature branches with environment-based releases, which fits our student project pace.
   </p>
 </section>
 
-<div class="prose prose-slate dark:prose-invert px-6 max-w-4xl mx-auto">
+<div class="prose prose-slate dark:prose-invert pl-6">
   <h2>Why we chose GitLab Flow</h2>
   <ul>
     <li><strong>Simple mental model:</strong> one primary branch (<code>main</code>) + short-lived feature branches. No complicated multi-branch release trains.</li>
-    <li><strong>Fits CI/CD and environments:</strong> changes flow from <em>feature</em> → <em>dev</em> → <em>main</em> and can be deployed to preview/staging/production easily.</li>
+    <li><strong>Fits CI/CD and environments:</strong> changes flow from <em>feature</em> &rarr; <em>dev</em> &rarr; <em>main</em> and can be deployed to preview/staging/production easily.</li>
     <li><strong>Review-friendly:</strong> everything lands through Merge Requests (MRs) with checks, code review, and status badges.</li>
     <li><strong>Low overhead for a small team:</strong> fewer permanent branches than Git Flow; more structure than trunk-only.</li>
   </ul>
 
-  <blockquote>
-    <p><strong>TL;DR</strong> — GitLab Flow gives us predictable, low-friction collaboration with clear promotion from feature to production, without a maze of long-lived branches.</p>
+  <blockquote class="text-gray-800 dark:text-gray-200">
+    <p><strong>TL;DR</strong> - GitLab Flow gives us predictable, low-friction collaboration with clear promotion from feature to production, without a maze of long-lived branches.</p>
   </blockquote>
 
   <h2>Core ideas of GitLab Flow</h2>
   <ol>
-    <li><strong>Main as the single source of truth.</strong> It's always shippable and protected.</li>
-    <li><strong>Feature branches</strong> for isolated work. Short-lived, focused on a single task, merged by MR.</li>
-    <li><strong>Environment branches (optional)</strong> like <code>dev</code> or <code>staging</code> reflect deployment targets, not long-term development tracks.</li>
-    <li><strong>Promotions via MR</strong> with checks (build, tests, lint) at each step.</li>
+    <li><strong>Main as the single source of truth:</strong> It is always shippable and protected.</li>
+    <li><strong>Feature branches:</strong> Short-lived, focused on a single task, merged by MR.</li>
+    <li><strong>Environment branches (optional):</strong> like <code>dev</code> or <code>staging</code> reflect deployment targets, not long-term development tracks.</li>
+    <li><strong>Promotions via MR:</strong> Checks (build, tests, lint) at each step.</li>
   </ol>
 
   <h2>Our branch model</h2>
@@ -80,33 +80,20 @@ dev  -> preview deploy (optional manual QA)
 main -> production deploy
   </pre>
 
-  <h2>Team rules & conventions</h2>
+  <h2>Team rules and conventions</h2>
   <ul>
     <li><strong>Branch naming:</strong> <code>feature/&lt;ticket-id&gt;-&lt;slug&gt;</code> (e.g., <code>feature/123-signup-form</code>)</li>
-    <li><strong>Small MRs:</strong> aim for &lt;= 300 lines changed to keep reviews fast.</li>
-    <li><strong>CI checks block merges:</strong> unit tests, lint, build must pass.</li>
+    <li><strong>Small MRs:</strong> aim for under 300 lines changed to keep reviews fast.</li>
+    <li><strong>CI checks block merges:</strong> unit tests, lint, and build must pass.</li>
     <li><strong>Reviews:</strong> at least 1 approval; author cannot self-approve.</li>
     <li><strong>Keep main green:</strong> no direct commits; all merges via MR.</li>
-    <li><strong>Tags (optional):</strong> tag releases on <code>main</code> as <code>vX.Y.Z</code> for presentation milestones.</li>
+    <li><strong>Tags (optional):</strong> tag releases on <code>main</code> as <code>vX.Y.Z</code> for milestones.</li>
   </ul>
-
-  <h2>Daily workflow (step-by-step)</h2>
-  <ol>
-    <li>Create a branch:
-      <pre><code>git checkout -b feature/123-login</code></pre>
-    </li>
-    <li>Commit work in small chunks with clear messages:
-      <pre><code>git commit -m "feat(auth): add login form and validation"</code></pre>
-    </li>
-    <li>Open a MR to <code>dev</code>. CI runs (build + tests + lint). Request review.</li>
-    <li>After QA on <code>dev</code> (or preview), open a MR from <code>dev</code> → <code>main</code>.</li>
-    <li>Tag release on <code>main</code> if needed and deploy.</li>
-  </ol>
 
   <h2>Why not Git Flow or Trunk-Based?</h2>
   <ul>
-    <li><strong>Git Flow</strong> adds many long-lived branches (develop, release, hotfix), which is overkill for our timeline.</li>
-    <li><strong>Trunk-Based</strong> is very fast but expects high discipline and feature flags; we prefer the safety of a <code>dev</code> gate.</li>
+    <li><strong>Git Flow:</strong> adds many long-lived branches (develop, release, hotfix), which is overkill for our timeline.</li>
+    <li><strong>Trunk-Based:</strong> very fast but expects high discipline and feature flags; we prefer the safety of a <code>dev</code> gate.</li>
   </ul>
 
   <h2>Do / Don't</h2>
@@ -133,6 +120,6 @@ main -> production deploy
 
   <h2>References</h2>
   <p class="text-sm">
-    We used public guides on branching strategies to shape a lightweight flow suitable for our project timeline (e.g., the overview on AB Tasty's blog).
+    We used public guides on branching strategies to shape a lightweight flow suitable for our project timeline (for example, the overview on AB Tasty's blog).
   </p>
 </div>

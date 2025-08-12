@@ -5,3 +5,4 @@ function HelloWorld() {
 }
 
 export default HelloWorld;
+// can delete this file and HelloWorld.test.js just to make sure Jest works

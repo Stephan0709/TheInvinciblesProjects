@@ -1,28 +1,9 @@
-/* documentation/src/styles/global.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind typography;
 
-body {
+/* optional overrides */
+body { 
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #fdfdfd;
-  color: #222;
-}
-
-nav {
-  background-color: #222;
-  padding: 1rem;
-}
-
-nav a {
-  color: #fff;
-  margin-right: 1rem;
-  text-decoration: none;
-}
-
-nav a:hover {
-  text-decoration: underline;
-}
-
-main {
-  padding: 2rem;
 }

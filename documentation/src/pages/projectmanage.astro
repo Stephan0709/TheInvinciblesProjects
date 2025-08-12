@@ -1,0 +1,110 @@
+---
+layout: '../layouts/Layout.astro'
+title: 'Project Management - Scrum'
+description: 'Our development methodology: what Scrum is, why we use it, and how we apply it.'
+---
+
+<section class="not-prose mb-6 px-6 max-w-4xl mx-auto">
+  <h1 class="text-3xl font-bold tracking-tight">Project Management: Scrum</h1>
+  <p class="mt-2 text-slate-600 dark:text-slate-300">
+    We use Scrum because it helps us plan in small steps, deliver usable increments, and adapt when requirements change.
+    Our team has used Scrum before, so we are familiar with the cadence and roles. This page explains what Scrum means for us,
+    why we chose it, and how we will run it during the project.
+  </p>
+</section>
+
+<div class="prose prose-slate dark:prose-invert px-6 max-w-4xl mx-auto">
+
+  <h2>Why we chose Scrum</h2>
+  <p>
+    Scrum breaks work into short iterations called Sprints, typically 1 to 2 weeks. Each Sprint ends with a working increment,
+    feedback from stakeholders, and a chance to improve our process. This lets us manage uncertainty, keep scope under control,
+    and make steady progress without long periods of invisible work.
+  </p>
+  <ul>
+    <li><strong>Short feedback loops:</strong> Sprints end with reviews and demos, so we learn quickly and adjust next steps.</li>
+    <li><strong>Clear priorities:</strong> The Product Backlog is ordered; the most valuable items rise to the top.</li>
+    <li><strong>Focus:</strong> A Sprint Goal helps the team align and reduces context switching.</li>
+    <li><strong>Continuous improvement:</strong> Retrospectives give us a structured way to fix blockers and improve teamwork.</li>
+  </ul>
+
+  <h2>Scrum roles in our team</h2>
+  <ul>
+    <li><strong>Product Owner (PO):</strong> owns the Product Backlog, clarifies value, accepts work that meets Definition of Done. Works closely with the client.</li>
+    <li><strong>Scrum Master (SM):</strong> facilitates events, removes impediments, protects the team from scope churn during the Sprint.</li>
+    <li><strong>Developers:</strong> cross functional team members who design, build, test, document, and deliver the increment.</li>
+  </ul>
+
+  <h2>Core artifacts</h2>
+  <ul>
+    <li><strong>Product Backlog:</strong> ordered list of user stories, bugs, and spikes. Updated continuously.</li>
+    <li><strong>Sprint Backlog:</strong> the subset we commit to for the current Sprint, plus a Sprint Goal.</li>
+    <li><strong>Increment:</strong> potentially shippable work that meets our Definition of Done.</li>
+  </ul>
+
+  <h2>Events and cadence</h2>
+  <ul>
+    <li><strong>Sprint Planning:</strong> pick a Sprint Goal, select top items, break them into tasks.</li>
+    <li><strong>Daily Scrum (standup):</strong> 15 minutes max. What we did, what we will do, blockers. Update board and plan the day.</li>
+    <li><strong>Sprint Review:</strong> demo the increment, gather feedback, adjust the Product Backlog.</li>
+    <li><strong>Retrospective:</strong> discuss what went well, what to improve, and choose 1 to 2 concrete actions for the next Sprint.</li>
+  </ul>
+
+  <h2>How we apply Scrum in this project</h2>
+  <ul>
+    <li><strong>Sprint length:</strong> 1 week during high activity; 2 weeks if workload is heavy or exams overlap.</li>
+    <li><strong>Backlog tool:</strong> GitHub Projects or Issues. Each item links to a branch and PR.</li>
+    <li><strong>Branch strategy:</strong> feature branches &rarr; dev &rarr; main (documented on the Methodology page).</li>
+    <li><strong>Definition of Ready:</strong> user story has a clear value statement, acceptance criteria, and test ideas.</li>
+    <li><strong>Definition of Done:</strong> code reviewed, tests passing, docs updated (user docs or API notes), deployed to dev if applicable.</li>
+  </ul>
+
+  <h2>Pros and cons we accept</h2>
+  <div class="grid gap-4 sm:grid-cols-2 not-prose">
+    <div class="rounded-2xl border border-emerald-300/50 bg-emerald-50 dark:bg-emerald-900/20 p-4">
+      <h3 class="font-semibold text-emerald-800 dark:text-emerald-200">Pros</h3>
+      <ul class="mt-2 list-disc pl-5 text-sm">
+        <li>Frequent feedback keeps the product aligned with client needs.</li>
+        <li>Small batches reduce risk and make scope changes manageable.</li>
+        <li>Visible progress through demos and burn charts keeps morale up.</li>
+      </ul>
+    </div>
+    <div class="rounded-2xl border border-rose-300/50 bg-rose-50 dark:bg-rose-900/20 p-4">
+      <h3 class="font-semibold text-rose-800 dark:text-rose-200">Cons</h3>
+      <ul class="mt-2 list-disc pl-5 text-sm">
+        <li>Meetings can feel heavy if we do not timebox and prepare.</li>
+        <li>Poorly written stories slow the team and create rework.</li>
+        <li>Too much scope change mid Sprint hurts focus.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Risks and our mitigations</h2>
+  <ul>
+    <li><strong>Unclear stories:</strong> we require acceptance criteria and a quick example before pulling a story into a Sprint.</li>
+    <li><strong>Scope creep:</strong> changes wait for the next Sprint unless they are critical. The PO updates priority between Sprints.</li>
+    <li><strong>Overcommitment:</strong> we track historical velocity and reserve buffer for bug fixes and integration issues.</li>
+    <li><strong>Communication gaps:</strong> daily standup is mandatory during Sprints; decisions captured in the docs site.</li>
+  </ul>
+
+  <h2>Working agreements</h2>
+  <ul>
+    <li>Standup is 15 minutes max. Deep dives happen after the call with only the people needed.</li>
+    <li>Keep stories small. If work is larger than 2 to 3 days, split it.</li>
+    <li>Every PR links to a story and includes a brief test plan or screenshots.</li>
+    <li>Finish started work before starting new work to reduce WIP.</li>
+  </ul>
+
+  <h2>Lightweight flow</h2>
+  <pre class="not-prose rounded-xl bg-slate-900 text-white p-4 text-sm overflow-auto">
+Backlog grooming -> Sprint planning -> Build -> Daily standups
+-> Code review and tests -> Sprint review demo -> Retrospective
+-> Next Sprint
+  </pre>
+
+  <h2>References</h2>
+  <p class="text-sm">
+    We reviewed several Scrum overviews to shape this process, including articles that discuss advantages, disadvantages, and typical pitfalls of Scrum. Prior team experience also influenced our choices.
+  </p>
+
+</div>
