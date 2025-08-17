@@ -3,18 +3,228 @@ layout: '../layouts/Layout.astro'
 title: 'Design & Methodology'
 ---
 
-# Design & Methodology
+<section class="not-prose mb-6 px-6 max-w-4xl mx-auto">
+  <h1 class="text-3xl font-bold tracking-tight">Design and Development Plan</h1>
+  <p class="mt-2 text-slate-600 dark:text-slate-300">
+    This page outlines the architecture, feature set, and a practical roadmap for our Sports
+    Statistics and Betting Platform. It is aligned with our Scrum process and the GitLab Flow
+    branching model used across the repo.
+  </p>
+</section>
 
-## Software Development Methodology
-Briefly explain your chosen methodology here (Agile, Scrum, Kanban).
+<div class="prose prose-slate dark:prose-invert px-6 max-w-4xl mx-auto">
 
-## Technical Stack
-- Frontend: React.js
-- Backend: Spring Boot
-- Database: PostgreSQL
-- Deployment: Vercel, GitHub Pages
+  <h2>1. Project overview</h2>
+  <p>
+    We are building a web platform that combines deep football statistics with a simple betting
+    workflow. The first release focuses on the English Premier League, with the South African
+    Premiership planned next. Users can explore up to 3 years of historic data and place informed
+    bets using both standard stats and our custom analytics.
+  </p>
 
-## Architectural Diagrams
-Add your diagrams clearly here:
+  <h3>Core goals</h3>
+  <ul>
+    <li>Deliver a clean, fast UI for browsing teams, matches, and head to head stats.</li>
+    <li>Provide advanced, easy to read analytics that go beyond basic box score numbers.</li>
+    <li>Offer a straightforward betting flow with deposits, withdrawals, and bet tracking.</li>
+    <li>Keep the system secure and deployable with CI/CD from day one.</li>
+  </ul>
+
+  <h2>2. System architecture</h2>
+  <ul>
+    <li><strong>Client:</strong> React app deployed on Vercel.</li>
+    <li><strong>API:</strong> Spring Boot REST service hosted on Render.</li>
+    <li><strong>Database:</strong> PostgreSQL on Supabase (managed Postgres + auth rules at API layer).</li>
+    <li><strong>Auth:</strong> Firebase Authentication (ID tokens validated by the API).</li>
+    <li><strong>Data source:</strong> API-Football for fixtures, results, and team metrics.</li>
+  </ul>
+
+  <p class="text-sm">
+    See the Deployment diagram on the Design page for a visual layout of nodes, artifacts, and links.
+  </p>
+
+  <h2>3. Feature set</h2>
+  <h3>Statistics module</h3>
+  <ul>
+    <li><strong>Standard stats:</strong> goals for/against, shots, shots on target, possession, cards, pass accuracy, home vs away results, 5 game form.</li>
+    <li><strong>Advanced stats (custom):</strong>
+      <ul>
+        <li>Momentum Index: weighted recent form over last N matches.</li>
+        <li>Clutch Performance Score: output in last 15 minutes vs match average.</li>
+        <li>Consistency Metric: variance of results over recent fixtures.</li>
+        <li>Odds vs Performance: how market odds historically under or over price a team.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3>Betting module</h3>
+  <ul>
+    <li>Enter Prediction: user selects fixture and outcome, submits bet.</li>
+    <li>System Prediction: optional model driven suggestion based on our metrics.</li>
+    <li>Wallet: deposit and withdrawal pages, transaction history.</li>
+    <li>Bet tracking: open and settled bets, returns and yield.</li>
+  </ul>
+
+  <h3>Accounts and roles</h3>
+  <ul>
+    <li>Firebase auth (email and Google).</li>
+    <li>Roles: user, admin (admin can manage fixtures cache, metrics recompute, and users).</li>
+  </ul>
+
+  <h2>4. UX and screens</h2>
+  <p>
+    The Figma covers the initial surface area: Login, Profile, Dashboard, Fixtures, H2H, Enter
+    Prediction, System Prediction, Deposit, Withdraw, and Optional Predictions. Navigation favors
+    short paths: Fixtures to H2H, then place a bet or explore predictions, then back to Dashboard
+    for wallet and bet status.
+  </p>
+
+  <div class="flex flex-col sm:flex-row justify-center gap-4 my-6">
+  <img src="/figma_1.png" alt="Design mockup 1" class="sm:w-3/4 rounded-lg border border-slate-300 dark:border-slate-700" />
+  <img src="/figma_2.png" alt="Design mockup 2" class="sm:w-3/4 rounded-lg border border-slate-300 dark:border-slate-700" />
+</div>
 
 
+  <h2>5. Data model (high level)</h2>
+  <ul>
+    <li><strong>teams</strong>: id, name, league, season, crest_url.</li>
+    <li><strong>fixtures</strong>: id, home_id, away_id, kickoff, league, season, score, status.</li>
+    <li><strong>stats_raw</strong>: fixture_id, team_id, provider_payload (jsonb).</li>
+    <li><strong>stats_derived</strong>: team_id, season, momentum, clutch, consistency, odds_bias.</li>
+    <li><strong>users</strong>: uid (firebase), email, display_name, role.</li>
+    <li><strong>wallets</strong>: uid, balance_cents.</li>
+    <li><strong>transactions</strong>: id, uid, type (deposit, withdraw), amount_cents, created_at.</li>
+    <li><strong>bets</strong>: id, uid, fixture_id, selection, stake_cents, odds, status, payout_cents.</li>
+  </ul>
+
+<h2>6. API design (selected endpoints)</h2>
+<pre><code>GET   /api/fixtures?league=EPL&amp;from=YYYY-MM-DD&amp;to=YYYY-MM-DD
+GET   /api/fixtures/&#123;id&#125;
+GET   /api/teams/&#123;id&#125;/stats?season=2023
+GET   /api/h2h?homeId=..&amp;awayId=..
+POST  /api/bets
+GET   /api/bets/me
+POST  /api/wallet/deposit
+POST  /api/wallet/withdraw
+</code></pre>
+
+
+  <p class="text-sm">
+    All protected endpoints require Authorization: Bearer &lt;id-token&gt;. The API validates tokens with Firebase Admin SDK.
+  </p>
+
+  <h2>7. Development methodology</h2>
+  <p>
+    We use Scrum with 2 week sprints. Each sprint delivers a slice that is testable and demoable.
+    Backlog is ordered by value and risk. We practice GitLab Flow: feature branches and merge
+    requests into dev, then promotion to main after checks pass.
+  </p>
+
+  <h3>Why Scrum works here</h3>
+  <ul>
+    <li>Frequent demos keep UI and data quality on track.</li>
+    <li>Scope can adapt if API or compliance constraints surface.</li>
+    <li>Clear cadence for planning, review, and retrospective.</li>
+  </ul>
+
+  <h2>8. Roadmap and phases</h2>
+
+  <h3>Phase 1: Foundation (Weeks 1-2)</h3>
+  <ul>
+    <li>Repo, environments, CI, and deployments (Vercel, Render, Supabase).</li>
+    <li>Firebase Auth and protected routes in the API.</li>
+    <li>Base pages: Login, Dashboard shell, Layout and navigation.</li>
+  </ul>
+
+  <h3>Phase 2: Core stats and UI (Weeks 3-5)</h3>
+  <ul>
+    <li>API-Football integration, fixture caching, and rate limit handling.</li>
+    <li>Fixtures, H2H, and Dashboard data widgets.</li>
+    <li>Derived metrics: momentum, clutch, consistency, odds bias.</li>
+  </ul>
+
+  <h3>Phase 3: Betting flow (Weeks 6-7)</h3>
+  <ul>
+    <li>Enter Prediction and System Prediction pages.</li>
+    <li>Wallet with deposit/withdraw and transaction history.</li>
+    <li>Bet placement, settlement, and tracking.</li>
+  </ul>
+
+  <h3>Phase 4: Testing and QA (Weeks 8-9)</h3>
+  <ul>
+    <li>Frontend tests with Jest and Testing Library.</li>
+    <li>Backend tests with JUnit and integration tests against a test DB.</li>
+    <li>Usability passes on key flows, performance checks, and bug fixing.</li>
+  </ul>
+
+  <h3>Phase 5: Polish and release (Week 10)</h3>
+  <ul>
+    <li>Charts and visual summaries on Dashboard and H2H.</li>
+    <li>Documentation finalization: design, methodology, testing, reflection.</li>
+    <li>Release candidate, demo script, and handover notes.</li>
+  </ul>
+
+  <h2>9. Risks and mitigation</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Risk</th>
+        <th>Impact</th>
+        <th>Mitigation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>API limits or downtime</td>
+        <td>Stats pages degrade</td>
+        <td>Cache responses in DB, background refresh, show last updated time</td>
+      </tr>
+      <tr>
+        <td>Betting logic grows complex</td>
+        <td>Delays and bugs</td>
+        <td>Start with simple markets (1X2), add others behind flags</td>
+      </tr>
+      <tr>
+        <td>Security concerns</td>
+        <td>User trust and data risk</td>
+        <td>Firebase for auth, HTTPS, server side validation, limited scopes</td>
+      </tr>
+      <tr>
+        <td>Team capacity changes</td>
+        <td>Scope slips</td>
+        <td>Scrum reprioritization, ship core first, keep optional features flexible</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>10. Success criteria</h2>
+  <ul>
+    <li>Users can sign in and view 3 years of team and H2H stats.</li>
+    <li>Custom metrics are computed and visible with clear descriptions.</li>
+    <li>Users can place, view, and settle simple bets.</li>
+    <li>Deposits and withdrawals work with audit history.</li>
+    <li>Deployed system is stable and demoable from public URLs.</li>
+  </ul>
+
+  <h2>11. Definition of done</h2>
+  <ul>
+    <li>Feature behind a routed page and linked from navigation.</li>
+    <li>Unit and basic integration tests added.</li>
+    <li>Accessible UI labels and keyboard paths checked.</li>
+    <li>Docs updated in the documentation site.</li>
+  </ul>
+
+  <h2>12. Next steps</h2>
+  <ol>
+    <li>Kick off Sprint 1 with the foundation tasks.</li>
+    <li>Prepare sample data and fixtures for UI development.</li>
+    <li>Create tracking issues per feature and attach to milestones.</li>
+  </ol>
+
+</div>
+
+<img
+  src="/deployment-diagram.svg"
+  alt="Deployment diagram: client, Vercel, Firebase, Render API, Supabase/PostgreSQL"
+  class="rounded-xl border border-slate-200 dark:border-slate-800"
+/>
