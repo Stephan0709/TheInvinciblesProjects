@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-label="UML deployment diagram of our system">
+  <defs>
+    <style>
+      .laneTitle { font: 700 16px system-ui, -apple-system, Segoe UI, Roboto, Arial; fill: #0f172a; }
+      .laneBox { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 2; rx: 12; }
+      .node3d-back { fill: #e2e8f0; }
+      .node3d-front { fill: #ffffff; stroke: #64748b; stroke-width: 2; rx: 10; }
+      .nodeTitle { font: 700 16px system-ui, -apple-system, Segoe UI, Roboto, Arial; fill: #0f172a; }
+      .artifact { font: 13px system-ui, -apple-system, Segoe UI, Roboto, Arial; fill: #0f172a; }
+      .artifactBox { fill: #ffffff; stroke: #94a3b8; stroke-width: 1.5; rx: 6; }
+      .stereotype { font: 11px system-ui, -apple-system, Segoe UI, Roboto, Arial; fill: #475569; }
+      .link { stroke: #334155; stroke-width: 2.2; }
+      .linkLabel { font: 12px system-ui, -apple-system, Segoe UI, Roboto, Arial; fill: #334155; }
+      .note { font: 12px system-ui, -apple-system, Segoe UI, Roboto, Arial; fill: #475569; }
+      .strong { font-weight: 700; }
+      .muted { fill: #475569; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="40" y="40" class="nodeTitle">Deployment Diagram</text>
+  <text x="40" y="62" class="note">Physical deployment of artifacts on execution nodes, with protocols and ports.</text>
+
+  <!-- Lanes -->
+  <rect x="20" y="80" width="1160" height="250" class="laneBox"/>
+  <text x="35" y="105" class="laneTitle">Client network</text>
+
+  <rect x="20" y="360" width="1160" height="300" class="laneBox"/>
+  <text x="35" y="385" class="laneTitle">Backend network</text>
+
+  <!-- Node: UserClient (3D) -->
+  <g transform="translate(60,140)">
+    <rect x="18" y="-18" width="280" height="160" class="node3d-back" rx="10"/>
+    <rect x="0" y="0" width="280" height="160" class="node3d-front"/>
+    <text x="16" y="28" class="nodeTitle">&lt;&lt;device&gt;&gt; UserClient</text>
+    <!-- Artifact: Browser -->
+    <rect x="16" y="50" width="248" height="80" class="artifactBox"/>
+    <text x="28" y="70" class="stereotype">&lt;&lt;artifact&gt;&gt;</text>
+    <text x="28" y="90" class="artifact strong">Browser</text>
+    <text x="28" y="112" class="artifact muted">Renders React app, stores token</text>
+  </g>
+
+  <!-- Node: Vercel (3D) -->
+  <g transform="translate(430,140)">
+    <rect x="18" y="-18" width="300" height="160" class="node3d-back" rx="10"/>
+    <rect x="0" y="0" width="300" height="160" class="node3d-front"/>
+    <text x="16" y="28" class="nodeTitle">&lt;&lt;execution env&gt;&gt; Vercel</text>
+    <!-- Artifact: Website -->
+    <rect x="16" y="50" width="268" height="80" class="artifactBox"/>
+    <text x="28" y="70" class="stereotype">&lt;&lt;artifact&gt;&gt;</text>
+    <text x="28" y="90" class="artifact strong">Website</text>
+    <text x="28" y="112" class="artifact muted">Static React build (SPA)</text>
+  </g>
+
+  <!-- Node: Firebase (3D) -->
+  <g transform="translate(820,140)">
+    <rect x="18" y="-18" width="300" height="160" class="node3d-back" rx="10"/>
+    <rect x="0" y="0" width="300" height="160" class="node3d-front"/>
+    <text x="16" y="28" class="nodeTitle">&lt;&lt;execution env&gt;&gt; Firebase</text>
+    <!-- Artifact: Auth -->
+    <rect x="16" y="50" width="268" height="80" class="artifactBox"/>
+    <text x="28" y="70" class="stereotype">&lt;&lt;artifact&gt;&gt;</text>
+    <text x="28" y="90" class="artifact strong">Auth</text>
+    <text x="28" y="112" class="artifact muted">Issues ID token (JWT)</text>
+  </g>
+
+  <!-- Node: Render (3D) -->
+  <g transform="translate(160,420)">
+    <rect x="18" y="-18" width="360" height="180" class="node3d-back" rx="10"/>
+    <rect x="0" y="0" width="360" height="180" class="node3d-front"/>
+    <text x="16" y="28" class="nodeTitle">&lt;&lt;execution env&gt;&gt; Render</text>
+    <!-- Artifact: Spring Boot API -->
+    <rect x="16" y="50" width="328" height="110" class="artifactBox"/>
+    <text x="28" y="70" class="stereotype">&lt;&lt;artifact&gt;&gt;</text>
+    <text x="28" y="90" class="artifact strong">Spring Boot API</text>
+    <text x="28" y="112" class="artifact muted">REST endpoints, validation</text>
+    <text x="28" y="132" class="artifact muted">JWT verification</text>
+  </g>
+
+  <!-- Node: Supabase (3D) -->
+  <g transform="translate(680,420)">
+    <rect x="18" y="-18" width="360" height="180" class="node3d-back" rx="10"/>
+    <rect x="0" y="0" width="360" height="180" class="node3d-front"/>
+    <text x="16" y="28" class="nodeTitle">&lt;&lt;execution env&gt;&gt; Supabase</text>
+    <!-- Artifact: PostgreSQL DB -->
+    <rect x="16" y="50" width="328" height="110" class="artifactBox"/>
+    <text x="28" y="70" class="stereotype">&lt;&lt;artifact&gt;&gt;</text>
+    <text x="28" y="90" class="artifact strong">PostgreSQL DB</text>
+    <text x="28" y="112" class="artifact muted">Relational data, migrations</text>
+  </g>
+
+  <!-- Links (client) -->
+  <line x1="340" y1="200" x2="430" y2="200" class="link" marker-end="url(#arrow)"/>
+  <text x="360" y="190" class="linkLabel">HTTPS 443 (loads SPA)</text>
+
+  <line x1="220" y1="300" x2="220" y2="420" class="link" marker-end="url(#arrow)"/>
+  <text x="100" y="355" class="linkLabel">HTTPS 443 (JSON API)</text>
+
+  <line x1="910" y1="300" x2="910" y2="420" class="link" marker-end="url(#arrow)"/>
+  <text x="840" y="355" class="linkLabel">Token introspection</text>
+
+  <line x1="720" y1="200" x2="820" y2="200" class="link" marker-end="url(#arrow)"/>
+  <text x="740" y="190" class="linkLabel">Auth flow</text>
+
+  <!-- Links (backend) -->
+  <line x1="520" y1="500" x2="680" y2="500" class="link" marker-end="url(#arrow)"/>
+  <text x="565" y="488" class="linkLabel">TCP 5432 (SQL)</text>
+
+  <!-- Notes -->
+  <text x="60" y="650" class="note">Legend: Nodes are 3D boxes; artifacts appear inside nodes; communication is labeled with protocol/port.</text>
+</svg>
