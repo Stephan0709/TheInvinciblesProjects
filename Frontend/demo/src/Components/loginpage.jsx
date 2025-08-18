@@ -13,12 +13,24 @@ function Loginfunction() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate(); // allows to go toanother page like /home
 
-  const handleGoogleLogin = async () => {  // runs when :Continue with Google" is clicked
-    try {
-      await signInWithPopup(auth, googleProvider); // opens pop-up to sign in with google
-      navigate("/profile"); //redirects to home is succesful
-    } catch (error) {
-      alert("Google login failed: " + error.message);
+  // const handleGoogleLogin = async () => {  // runs when :Continue with Google" is clicked
+  //   try {
+  //     await signInWithPopup(auth, googleProvider); // opens pop-up to sign in with google
+  //     navigate("/profile"); //redirects to home is succesful
+  //   } catch (error) {
+  //     alert("Google login failed: " + error.message);
+  //   }
+  // };
+
+  const handleGoogleLogin = () => {
+    if (window.location.hostname === 'localhost'){
+      window.location = "http://localhost:8080/oauth2/authorization/google";
+    }
+  } 
+
+  const handleGithubLogin = () => {
+    if (window.location.hostname === 'localhost'){
+      window.location = "http://localhost:8080/oauth2/authorization/github";
     }
   };
 
@@ -95,7 +107,16 @@ function Loginfunction() {
         <p className="or-divider">Or log in with</p>
 
         <div className="social-buttons">
-          <button className="facebook-button">Continue with Facebook</button>
+          <button className="github-button" onClick = {handleGithubLogin}>
+            <img
+              src = "https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"
+              alt = "Github logo"
+              className="github-logo"
+            />
+            Continue with Github
+          </button>
+
+
           <button className="google-button" onClick={handleGoogleLogin}>
             <img
               src="https://developers.google.com/identity/images/g-logo.png"
