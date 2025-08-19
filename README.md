@@ -8,7 +8,7 @@
 ## 🚀 Project Overview
 TheInvinciblesProjects is a web platform that blends **advanced football statistics** with a **straightforward betting flow**.  
 
-- Initial focus: **English Premier League**, with South African Premiership planned next.  
+- Initial focus: **South African Premiership**, with English Premier League planned next.  
 - Explore up to **3 years of historic data** and place informed bets using standard stats and our **custom analytics models**.  
 
 ### 🎯 Core Goals
