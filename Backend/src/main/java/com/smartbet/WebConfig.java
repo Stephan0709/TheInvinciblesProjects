@@ -15,7 +15,7 @@ public class WebConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 //** means apply to all url
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:3002")
+                        .allowedOrigins("http://localhost:8080")
                         .allowedMethods("GET","POST","PUT","DELETE","OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);

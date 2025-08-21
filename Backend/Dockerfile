@@ -26,7 +26,7 @@ WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 
 # Expose port (Render will override with $PORT)
-EXPOSE 3002
+EXPOSE 8080
 
 # Run the app
 CMD ["java", "-jar", "app.jar"]
