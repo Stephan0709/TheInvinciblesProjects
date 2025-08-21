@@ -1,10 +1,11 @@
-package com.smartbet.theinvincibles;
+package com.codewithmosh.smartbet;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import com.smartbet.SmartBetApplication;
 
-@SpringBootTest
-class TheinvinciblesApplicationTests {
+@SpringBootTest(classes = SmartBetApplication.class)
+class SmartBetApplicationTests {
 
     @Test
     void contextLoads() {

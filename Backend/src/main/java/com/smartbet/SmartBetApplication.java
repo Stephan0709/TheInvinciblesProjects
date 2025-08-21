@@ -1,13 +1,13 @@
-package com.smartbet.theinvincibles;
+package com.smartbet;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TheinvinciblesApplication {
+public class SmartBetApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TheinvinciblesApplication.class, args);
+        SpringApplication.run(SmartBetApplication.class, args);
     }
 
 }

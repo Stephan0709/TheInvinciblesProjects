@@ -1,4 +1,4 @@
-package com.codewithmosh.smartbet;
+package com.smartbet;
 
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserRequest;
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserService;

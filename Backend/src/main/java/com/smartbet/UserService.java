@@ -1,4 +1,4 @@
-package com.codewithmosh.smartbet;
+package com.smartbet;
 
 import org.springframework.stereotype.Service;
 
