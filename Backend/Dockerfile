@@ -25,8 +25,8 @@ WORKDIR /app
 # Copy the built JAR from the build stage
 COPY --from=build /app/target/*.jar app.jar
 
-# Expose port (Render will override with $PORT)
-EXPOSE 8080
+# Don't expose a specific port - Render will set the PORT env var
+# EXPOSE directive is not needed for Render
 
-# Run the app
-CMD ["java", "-jar", "app.jar"]
+# Run the app with server address binding to all interfaces
+CMD ["java", "-Dserver.address=0.0.0.0", "-jar", "app.jar"]

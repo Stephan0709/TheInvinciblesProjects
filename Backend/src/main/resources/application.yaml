@@ -46,7 +46,7 @@ spring:
             scope: openid,profile,email
 
 server:
-  port: ${PORT:8080}
+  port: ${PORT:10000}
 
 # Logging configuration to reduce startup noise
 logging:
