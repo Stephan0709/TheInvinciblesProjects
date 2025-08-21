@@ -111,7 +111,7 @@
   justify-content: center;
 }
 
-.facebook-button,
+.github-button,
 .google-button {
   padding: 10px 20px;
   font-size: 14px;
@@ -124,7 +124,8 @@
   gap: 10px;
 }
 
-.google-logo {
+.google-logo,
+.github-logo {
   width: 20px;
   height: 20px;
 }
