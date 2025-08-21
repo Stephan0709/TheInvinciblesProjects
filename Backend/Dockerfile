@@ -10,6 +10,9 @@ COPY .mvn .mvn
 COPY pom.xml .
 COPY src src
 
+# Add execute permission to mvnw
+RUN chmod +x ./mvnw
+
 # Package the app
 RUN ./mvnw clean package -DskipTests
 
@@ -23,7 +26,7 @@ WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 
 # Expose port (Render will override with $PORT)
-EXPOSE 8080
+EXPOSE 3002
 
 # Run the app
 CMD ["java", "-jar", "app.jar"]
