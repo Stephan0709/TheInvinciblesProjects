@@ -12,6 +12,7 @@ function Loginfunction() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate(); // allows to go toanother page like /home
+  let baseUrl;
 
   // const handleGoogleLogin = async () => {  // runs when :Continue with Google" is clicked
   //   try {
@@ -22,16 +23,19 @@ function Loginfunction() {
   //   }
   // };
 
+  if (window.location.hostname === 'localhost'){
+    baseUrl = "http://localhost:8080"; 
+  }
+  else{
+    baseUrl = "http://celebrated-intuition-production.up.railway.app";
+  }
+
   const handleGoogleLogin = () => {
-    if (window.location.hostname === 'localhost'){
-      window.location = "http://localhost:8080/oauth2/authorization/google";
-    }
+    window.location = `${baseUrl}/oauth2/authorization/google`;
   } 
 
   const handleGithubLogin = () => {
-    if (window.location.hostname === 'localhost'){
-      window.location = "http://localhost:8080/oauth2/authorization/github";
-    }
+    window.location = `${baseUrl}/oauth2/authorization/github`;
   };
 
   const handleEmailLogin = async (e) => { // runs when user entes email/password

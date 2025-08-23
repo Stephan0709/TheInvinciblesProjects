@@ -4,9 +4,17 @@ import axios from "axios";
 function ProfilePage() {
 
   const [user,setUser] = useState(null);
+  let baseUrl;
+
+  if (window.location.hostname === 'localhost'){
+    baseUrl = "http://localhost:8080"; 
+  }
+  else{
+    baseUrl = "http://celebrated-intuition-production.up.railway.app";
+  }
 
   useEffect(()=> {
-        axios.get('http://localhost:8080/user-info',{withCredentials: true})
+        axios.get(`${baseUrl}/user-info`,{withCredentials: true})
         .then(response => {
             setUser(response.data);
         })
